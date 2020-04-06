@@ -1,0 +1,24 @@
+{
+  "name": "readme_generator",
+  "version": "1.0.0",
+  "description": "generates a readme",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AZGchip/Readme_Generator.git"
+  },
+  "author": "Andrew Zinski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AZGchip/Readme_Generator/issues"
+  },
+  "homepage": "https://github.com/AZGchip/Readme_Generator#readme"
+}
