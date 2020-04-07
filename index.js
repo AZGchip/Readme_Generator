@@ -62,7 +62,7 @@ async function promptUser() {
           userAnswer[key] = answer[key];
         })
   }
- console.log(userAnswer) 
+ module.exports = {data: userAnswer}
  
 }
 // function buildReadme(){
