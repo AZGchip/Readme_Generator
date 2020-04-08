@@ -17,17 +17,27 @@ const questions = [
   {
     type: "input",
     message: "Enter Project Installation Info",
-    name: "install"
+    name: "Installation"
   },
   {
     type: "input",
     message: "Enter Usage Information",
-    name: "usage"
+    name: "Usage"
   },
   {
     type: "input",
-    message: "Enter License info",
-    name: "license"
+    message: "Enter License Information",
+    name: "License"
+  },
+  {
+    type: "input",
+    message: "Enter Contributing Information",
+    name: "Contributing"
+  },
+  {
+    type: "input",
+    message: "Enter Testing Information",
+    name: "Tests"
   },
 ]
 
@@ -66,7 +76,12 @@ async function promptUser() {
   }
  let masterstring = md.buildReadme(userAnswer)
  console.log(masterstring)
- 
+ fs.writeFile("test.md", masterstring, function(err) {
+  if(err) {
+      return console.log(err);
+  }
+  console.log("File saved successfully!");
+});
 }
 // function buildReadme(){
 //   userAnswer.forEach(x => {

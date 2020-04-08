@@ -14,16 +14,22 @@ function buildReadme(data) {
       firstString += `# ${filler}`;
     }
     if (key == "description") {
-      firstString += `
-      ${filler}
-      `;
+      firstString +=
+        `
+      
+${filler}
+`;
     }
     if (data[key] !== '' && key !== "title" && key !== "description") {
-      tableOfContents += `
-      *[${key}](#${key})`
-      SecondString += `<a name ="${key}">## ${key}</a
-      ${filler}
-      `;
+      tableOfContents +=
+        `
+* [${key}](#${key})`;
+      SecondString +=
+        `
+      
+## <a name ="${key}"></a> ${key}
+${filler}
+`;
     }
   }
   return `
