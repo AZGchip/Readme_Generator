@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const axios = require("axios");
 const fs = require("fs");
-const mark = require("./generateMarkdown");
+const md = require("./generateMarkdown");
 // questions 
 const questions = [
   {
@@ -61,9 +61,11 @@ async function promptUser() {
        console.log(answer)
        console.log(key)
           userAnswer[key] = answer[key];
+          
         })
   }
- 
+ let masterstring = md.buildReadme(userAnswer)
+ console.log(masterstring)
  
 }
 // function buildReadme(){

@@ -2,30 +2,28 @@
 function buildReadme(data) {
   let filler;
   let key;
-  const tableOfContents = []
+  let tableOfContents = `## Table Of Contents`
   let firstString = ""
   let SecondString = ""
-  const tempObj = {
-    title: `# ${filler}`,
-    description: `
-  ${filler}
-  `,
-    table: tableOfContents,
-    section: `<a name ="${key}">## ${key}</a
-  ${filler}
-  `
-  }
   for (key of Object.keys(data)) {
     filler = data[key];
-    if (key === title) {
-      firstString += tempObj.title;
+    // console.log(`filler is ${filler}
+    // data and key is ${data[key]}
+    // `)
+    if (key == "title") {
+      firstString += `# ${filler}`;
     }
-    if (key === description) {
-      firstString += tempObj.description;
+    if (key == "description") {
+      firstString += `
+      ${filler}
+      `;
     }
-    if (data[key] !== '' && key !== title && key !== description) {
-      tableOfContents.push(`*[${key}](#${key})`)
-      SecondString += tempObj.section;
+    if (data[key] !== '' && key !== "title" && key !== "description") {
+      tableOfContents += `
+      *[${key}](#${key})`
+      SecondString += `<a name ="${key}">## ${key}</a
+      ${filler}
+      `;
     }
   }
   return `
