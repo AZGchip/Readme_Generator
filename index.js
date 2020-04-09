@@ -7,12 +7,12 @@ const questions = [
   {
     type: "input",
     message: "Enter Project Title",
-    name: "title"
+    name: "Title"
   },
   {
     type: "input",
     message: "Enter Project Description",
-    name: "description"
+    name: "Description"
   },
   {
     type: "input",
@@ -43,50 +43,47 @@ const questions = [
 
 
 const userAnswer = {};
-// getInfo()
-// //asks user for github username. searches github with input
-// function getInfo() {
-//   inquirer
-//     .prompt({
-//       message: "Enter your GitHub username",
-//       name: "username"
-//     })
-//     .then(function ({ username }) {
-//       const queryUrl = `https://api.github.com/users/${username}`;
-//       axios.get(queryUrl)
-//         .then(function (res) {
-//           console.log(res.data.avatar_url);
-//           console.log(res.data.email);
+getInfo()
+//asks user for github username. searches github with input
+function getInfo() {
+  inquirer
+    .prompt({
+      message: "Enter your GitHub username",
+      name: "username"
+    })
+    .then(function ({ username }) {
+      const queryUrl = `https://api.github.com/users/${username}`;
+      axios.get(queryUrl)
+        .then(function (res) {
 
-//           promptUser()
-//         });
-//     });
-// }
-promptUser()
-async function promptUser() {
+          console.log(userAnswer)
+          promptUser(res,username)
+        });
+    });
+}
+
+async function promptUser(res, username) {
   for (let i = 0; i < questions.length; i++) {
     await inquirer.prompt(questions[i])
       .then(function (answer) {
-       let key = Object.keys(answer)[0]
-       console.log(answer)
-       console.log(key)
-          userAnswer[key] = answer[key];
-          
-        })
+        let key = Object.keys(answer)[0]
+        console.log(answer)
+        console.log(key)
+        userAnswer[key] = answer[key];
+
+      })
+
   }
- let masterstring = md.buildReadme(userAnswer)
- console.log(masterstring)
- fs.writeFile("test.md", masterstring, function(err) {
-  if(err) {
+  userAnswer["Image"] = res.data.avatar_url;
+  userAnswer["Email"] = res.data.email;
+  userAnswer["username"]= username
+  let masterstring = md.buildReadme(userAnswer)
+  console.log(masterstring)
+  fs.writeFile("test.md", masterstring, function (err) {
+    if (err) {
       return console.log(err);
-  }
-  console.log("File saved successfully!");
-});
+    }
+    console.log("File saved successfully!");
+  });
 }
-// function buildReadme(){
-//   userAnswer.forEach(x => {
-//    let key = Object.keys(answer)[0];
-//    if(userAnswer[x].key){}
-//   });
-// }
 
