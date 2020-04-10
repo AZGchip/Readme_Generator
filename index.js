@@ -5,14 +5,19 @@ const md = require("./generateMarkdown");
 // questions 
 const questions = [
   {
+    type:"confirm",
+    message:"Is this project Open Source?",
+    name:"opensrc",
+  },
+  {
     type: "input",
     message: "Enter Project Title",
-    name: "Title"
+    name: "title"
   },
   {
     type: "input",
     message: "Enter Project Description",
-    name: "Description"
+    name: "description"
   },
   {
     type: "input",
@@ -56,7 +61,7 @@ function getInfo() {
       axios.get(queryUrl)
         .then(function (res) {
 
-          console.log(userAnswer)
+          console.log(res)
           promptUser(res,username)
         });
     });
@@ -74,8 +79,8 @@ async function promptUser(res, username) {
       })
 
   }
-  userAnswer["Image"] = res.data.avatar_url;
-  userAnswer["Email"] = res.data.email;
+  userAnswer["image"] = res.data.avatar_url;
+  userAnswer["email"] = res.data.email;
   userAnswer["username"]= username
   let masterstring = md.buildReadme(userAnswer)
   console.log(masterstring)
