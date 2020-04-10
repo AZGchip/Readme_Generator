@@ -61,8 +61,8 @@ function getInfo() {
       axios.get(queryUrl)
         .then(function (res) {
 
-          console.log(res)
-          promptUser(res,username)
+          console.log(res);
+          promptUser(res,username);
         });
     });
 }
