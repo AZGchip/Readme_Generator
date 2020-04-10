@@ -94,7 +94,7 @@ async function promptUser(res, username) {
   //creates readme template string useing readmeData plugged into inported md.buildreadme
   let masterstring = md.buildReadme(readmeData)
   //saves file
-  fs.writeFile("test.md", masterstring, function (err) {
+  fs.writeFile("README.md", masterstring, function (err) {
     if (err) {
       return console.log(err);
     }
