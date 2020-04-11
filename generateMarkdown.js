@@ -6,10 +6,10 @@ function buildReadme(data) {
   let firstString = "";
   let secondString = "";
   let oS;
-  if (data["opnsrc"] !== undefined && data["opnsrc"] === true){
-     oS = "[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)"
+  if (data["opnsrc"] !== undefined && data["opnsrc"] === true) {
+    oS = "[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)"
   }
-  else{ oS = ""}
+  else { oS = "" }
   //runs through each key in the data object
   for (key of Object.keys(data)) {
     //filler's value is set to the current key's attribute
@@ -39,7 +39,7 @@ If you have any questions, please contact me at: ${data["email"]}`
     //handles building the title and adds it to firstString
     if (key == "title") {
       if (data["maintained"] !== undefined && data["maintained"] !== null) {
-        if (data["maintained"] === true) {
+        if (data["maintained"]) {
           firstString += `# ${filler}
           
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/${data["username"]}/${data["title"]}/graphs/commit-activity)
@@ -54,8 +54,10 @@ ${oS}
       `;
         }
       }
-      else { firstString += `# ${filler}
-${oS}`; }
+      else {
+        firstString += `# ${filler}
+${oS}`;
+      }
     }
     //handles building the description and adds it to firstString
     if (key == "description") {

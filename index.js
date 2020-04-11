@@ -79,7 +79,6 @@ async function promptUser(res, username) {
   for (let i = 0; i < questions.length; i++) {
     await inquirer.prompt(questions[i])
       .then(function (answer) {
-        console.log(answer)
         //adds the user's answer for each question to readmeData
         let key = Object.keys(answer)[0]
         readmeData[key] = answer[key];
@@ -94,7 +93,7 @@ async function promptUser(res, username) {
   //creates readme template string useing readmeData plugged into inported md.buildreadme
   let masterstring = md.buildReadme(readmeData)
   //saves file
-  fs.writeFile("README.md", masterstring, function (err) {
+  fs.writeFile("newReadme.md", masterstring, function (err) {
     if (err) {
       return console.log(err);
     }
